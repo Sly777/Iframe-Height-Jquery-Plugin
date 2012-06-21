@@ -1,0 +1,46 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Full Options Demo | Iframe Auto Height by Ilker Guller</title>
+    <meta name="description" content="Testing Iframe Height plugin" />
+    <meta name="author" content="Ilker Guller" />
+    <meta name="viewport" content="width=device-width">
+</head>
+<body>
+
+  <div id="container">
+    <header>
+      <h1>Full Options Demo</h1>
+    </header>
+    <div id="main" role="main">
+      <iframe id="autoIframe" src="Insidepages/height740.html" width="500" height="100" style="border:2px solid gray;"></iframe>
+    </div>
+    <footer>
+
+    </footer>
+  </div>
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script type="text/javascript" src="../src/iframeheight.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('#autoIframe').iframeHeight({ // These are not default values
+        resizeMaxTry         : 2,  
+        resizeWaitTime       : 300,    
+        minimumHeight        : 100, 
+        defaultHeight        : 500,   
+        heightOffset         : 90,    
+        exceptPages          : "",  
+        debugMode            : false,
+        visibilitybeforeload : true,
+        blockCrossDomain     : true
+      });
+    });
+  </script>
+</body>
+</html>
