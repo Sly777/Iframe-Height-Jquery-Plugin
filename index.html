@@ -1,0 +1,193 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Iframe Auto Height - Jquery Plugin by Sly777</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+
+      <header>
+        <h1>Iframe Auto Height - Jquery Plugin</h1>
+        <p>This plugin can get contents of iframe and set height of iframe automatically. Also it has cross-domain fix (*).</p>
+      </header>
+
+      <div id="banner">
+        <span id="logo"></span>
+
+        <a href="https://github.com/Sly777/Iframe-Height-Jquery-Plugin" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/Sly777/Iframe-Height-Jquery-Plugin/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/Sly777/Iframe-Height-Jquery-Plugin/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
+        <h1>Iframe Height Jquery Plugin (Version 1.0.0)</h1>
+
+<h2>Usage</h2>
+
+<hr><ul>
+<li>include the latest version jquery in your page</li>
+<li>include the latest version iframe height plugin</li>
+<li>use .iframeHeight() to iframe that you want to fix</li>
+</ul><hr><h2>Examples</h2>
+
+<hr><p><strong>Basic Usage</strong> : ''
+$(document).ready(function(){
+    $('#autoIframe').iframeHeight();
+});
+''</p>
+
+<p>or</p>
+
+<p>''
+$(document).ready(function(){
+    $.iframeHeight('#autoIframe');
+});
+''</p>
+
+<p><strong>Debug Mode Usage</strong> : ''
+$('#autoIframe').iframeHeight({
+    debugMode : true
+});
+''</p>
+
+<p><strong>Full Options Usage</strong> : ''
+$('#autoIframe').iframeHeight({
+    resizeMaxTry         : 2,<br>
+    resizeWaitTime       : 300,<br>
+    minimumHeight        : 100, 
+    defaultHeight        : 500,<br>
+    heightOffset         : 90,<br>
+    exceptPages          : "",<br>
+    debugMode            : false,
+    visibilitybeforeload : true,
+    blockCrossDomain     : true
+});
+''</p>
+
+<hr><h2>Options</h2>
+
+<hr><ul>
+<li>
+<strong>resizeMaxTry</strong> : how many try that find true values (default : 4 Times)</li>
+<li>
+<strong>resizeWaitTime</strong> : wait time before next try (default : 50ms)</li>
+<li>
+<strong>minimumHeight</strong> : minimum height for iframe (default : 200px)</li>
+<li>
+<strong>defaultHeight</strong> : default height for iframe (default: 1000px)</li>
+<li>
+<strong>heightOffset</strong> : default top offset for iframe (default : 0px)</li>
+<li>
+<strong>exceptPages</strong> : Pages that doesnt need auto height (default : "")</li>
+<li>
+<strong>debugMode</strong> : Debug Mode (default : false)</li>
+<li>
+<strong>visibilitybeforeload</strong> : If you change this to true, iframe will be invisible when every iframe load (default : false)</li>
+<li>
+<strong>blockCrossDomain</strong> : Set true if you dont want use cross domain fix (default : false)</li>
+</ul><hr><h2>Details</h2>
+
+<hr><ul>
+<li>
+<strong>iframeheight.js</strong> is development version. <strong>iframeheight.min.js</strong> is produce version (minified).</li>
+<li>When you use it for cross domain fix, You must use <strong>postMessage</strong> function on page in iframe. (<a href="http://viget.com/extend/using-javascript-postmessage-to-talk-to-iframes">Click Here</a> or <a href="http://help.dottoro.com/ljjqtjsj.php">Click Here</a> for Details)</li>
+<li>You shouldn't use it on local because it doesnt work correctly in chrome (chrome gives cross domain error on local)</li>
+</ul><hr><h2>Demos</h2>
+
+<hr><p>You can see files inside of <strong>Demos</strong> Folder.</p>
+
+<hr><h2>Change Log</h2>
+
+<hr><p>Version 1.0.0 (21.06.2012) :
+Files uploaded to Github</p>
+
+<hr><h2>Author</h2>
+
+<hr><p>Ilker Guller (<a href="http://ilkerguller.com">http://ilkerguller.com</a>)</p>
+
+<hr><h2>For Issues, New Features, Grammar problems :)</h2>
+
+<hr><p>If you find issues or you want to add new features, feel free to post them to the 'Issues' tab.</p>
+
+<hr><h2>License</h2>
+
+<hr><p><strong>MIT License</strong></p>
+
+<p>Copyright (c) 2012 İlker Güller</p>
+
+<p>Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without
+restriction, including without limitation the rights to use,
+copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following
+conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.</p>
+
+<p><strong>GPL License</strong></p>
+
+<p>Copyright (c) 2012 İlker Güller</p>
+
+<p>This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.</p>
+
+<p>This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.</p>
+
+<p>You should have received a copy of the GNU General Public License
+along with this program.  If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>
+      </section>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/Sly777">Sly777</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-22085813-6");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
