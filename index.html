@@ -39,7 +39,7 @@
         <ul></ul>
       </nav>
       <section>
-        <h1>Iframe Height Jquery Plugin (Version 1.0.0)</h1>
+        <h1>Iframe Height Jquery Plugin (Version 1.1.0) - 27.08.2012</h1>
 
 <h2>Usage</h2>
 
@@ -49,39 +49,38 @@
 <li>use .iframeHeight() to iframe that you want to fix</li>
 </ul><hr><h2>Examples</h2>
 
-<hr><p><strong>Basic Usage</strong> : ''
-$(document).ready(function(){
+<hr><p><strong>Basic Usage</strong> :</p>
+
+<p><code>$(document).ready(function(){
     $('#autoIframe').iframeHeight();
-});
-''</p>
+});</code></p>
 
 <p>or</p>
 
-<p>''
-$(document).ready(function(){
+<p><code>$(document).ready(function(){
     $.iframeHeight('#autoIframe');
-});
-''</p>
+});</code></p>
 
-<p><strong>Debug Mode Usage</strong> : ''
-$('#autoIframe').iframeHeight({
+<p><strong>Debug Mode Usage</strong> :</p>
+
+<p><code>$('#autoIframe').iframeHeight({
     debugMode : true
-});
-''</p>
+});</code></p>
 
-<p><strong>Full Options Usage</strong> : ''
-$('#autoIframe').iframeHeight({
-    resizeMaxTry         : 2,<br>
-    resizeWaitTime       : 300,<br>
+<p><strong>Full Options Usage</strong> :</p>
+
+<p><code>$('#autoIframe').iframeHeight({
+    resizeMaxTry         : 2,  
+    resizeWaitTime       : 300,    
     minimumHeight        : 100, 
-    defaultHeight        : 500,<br>
-    heightOffset         : 90,<br>
-    exceptPages          : "",<br>
+    defaultHeight        : 500,   
+    heightOffset         : 90,    
+    exceptPages          : "",  
     debugMode            : false,
     visibilitybeforeload : true,
-    blockCrossDomain     : true
-});
-''</p>
+    blockCrossDomain     : true,
+    externalHeightName   : "bodyHeight"
+});</code></p>
 
 <hr><h2>Options</h2>
 
@@ -104,21 +103,42 @@ $('#autoIframe').iframeHeight({
 <strong>visibilitybeforeload</strong> : If you change this to true, iframe will be invisible when every iframe load (default : false)</li>
 <li>
 <strong>blockCrossDomain</strong> : Set true if you dont want use cross domain fix (default : false)</li>
+<li>
+<strong>externalHeightName</strong> : Height data name that comes from postMessage (CDI) and gives height value</li>
 </ul><hr><h2>Details</h2>
 
-<hr><ul>
+<hr><blockquote>
+<ul>
 <li>
 <strong>iframeheight.js</strong> is development version. <strong>iframeheight.min.js</strong> is produce version (minified).</li>
 <li>When you use it for cross domain fix, You must use <strong>postMessage</strong> function on page in iframe. (<a href="http://viget.com/extend/using-javascript-postmessage-to-talk-to-iframes">Click Here</a> or <a href="http://help.dottoro.com/ljjqtjsj.php">Click Here</a> for Details)</li>
 <li>You shouldn't use it on local because it doesnt work correctly in chrome (chrome gives cross domain error on local)</li>
-</ul><hr><h2>Demos</h2>
+</ul>
+</blockquote>
+
+<hr><h2>Demos</h2>
 
 <hr><p>You can see files inside of <strong>Demos</strong> Folder.</p>
 
 <hr><h2>Change Log</h2>
 
-<hr><p>Version 1.0.0 (21.06.2012) :
-Files uploaded to Github</p>
+<hr><p>Version 1.1.0 (27.08.2012) :</p>
+
+<blockquote>
+<ul>
+<li>Fixed Internet explorer 7 hidden element problem</li>
+<li>Added Cross-domain data name option</li>
+<li>Added reset.css to demo pages (<a href="http://meyerweb.com/eric/tools/css/reset/">http://meyerweb.com/eric/tools/css/reset/</a>)</li>
+</ul>
+</blockquote>
+
+<p>Version 1.0.0 (21.06.2012) :</p>
+
+<blockquote>
+<ul>
+<li>Files uploaded to Github</li>
+</ul>
+</blockquote>
 
 <hr><h2>Author</h2>
 
@@ -177,7 +197,7 @@ along with this program.  If not, see <a href="http://www.gnu.org/licenses/">htt
         <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></small></p>
       </footer>
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
