@@ -1,4 +1,4 @@
-﻿# Iframe Height Jquery Plugin (Version 1.0.0)
+# Iframe Height Jquery Plugin (Version 1.1.0) - 27.08.2012
 
 ## Usage
 
@@ -14,28 +14,27 @@
 
 ----------------------------------
 
-__Basic Usage__ : ''
-$(document).ready(function(){
+__Basic Usage__ :
+
+`$(document).ready(function(){
     $('#autoIframe').iframeHeight();
-});
-''
+});`
 
 or
 
-''
-$(document).ready(function(){
+`$(document).ready(function(){
     $.iframeHeight('#autoIframe');
-});
-''
+});`
 
-__Debug Mode Usage__ : ''
-$('#autoIframe').iframeHeight({
+__Debug Mode Usage__ :
+
+`$('#autoIframe').iframeHeight({
 	debugMode : true
-});
-''
+});`
 
-__Full Options Usage__ : ''
-$('#autoIframe').iframeHeight({
+__Full Options Usage__ :
+
+`$('#autoIframe').iframeHeight({
 	resizeMaxTry         : 2,  
 	resizeWaitTime       : 300,    
 	minimumHeight        : 100, 
@@ -44,9 +43,9 @@ $('#autoIframe').iframeHeight({
 	exceptPages          : "",  
 	debugMode            : false,
 	visibilitybeforeload : true,
-	blockCrossDomain     : true
-});
-''
+	blockCrossDomain     : true,
+	externalHeightName   : "bodyHeight"
+});`
 
 ----------------------------------
 
@@ -63,6 +62,7 @@ $('#autoIframe').iframeHeight({
 - __debugMode__ : Debug Mode (default : false)
 - __visibilitybeforeload__ : If you change this to true, iframe will be invisible when every iframe load (default : false)
 - __blockCrossDomain__ : Set true if you dont want use cross domain fix (default : false)
+- __externalHeightName__ : Height data name that comes from postMessage (CDI) and gives height value
 
 ----------------------------------
 
@@ -70,9 +70,9 @@ $('#autoIframe').iframeHeight({
 
 ----------------------------------
 
-- __iframeheight.js__ is development version. __iframeheight.min.js__ is produce version (minified).
-- When you use it for cross domain fix, You must use __postMessage__ function on page in iframe. ([Click Here](http://viget.com/extend/using-javascript-postmessage-to-talk-to-iframes) or [Click Here](http://help.dottoro.com/ljjqtjsj.php) for Details)
-- You shouldn't use it on local because it doesnt work correctly in chrome (chrome gives cross domain error on local)
+> - __iframeheight.js__ is development version. __iframeheight.min.js__ is produce version (minified).
+> - When you use it for cross domain fix, You must use __postMessage__ function on page in iframe. ([Click Here](http://viget.com/extend/using-javascript-postmessage-to-talk-to-iframes) or [Click Here](http://help.dottoro.com/ljjqtjsj.php) for Details)
+> - You shouldn't use it on local because it doesnt work correctly in chrome (chrome gives cross domain error on local)
 
 ----------------------------------
 
@@ -88,8 +88,13 @@ You can see files inside of __Demos__ Folder.
 
 ----------------------------------
 
+Version 1.1.0 (27.08.2012) :
+> - Fixed Internet explorer 7 hidden element problem
+> - Added Cross-domain data name option
+> - Added reset.css to demo pages ([http://meyerweb.com/eric/tools/css/reset/](http://meyerweb.com/eric/tools/css/reset/))
+
 Version 1.0.0 (21.06.2012) :
-Files uploaded to Github
+> - Files uploaded to Github
 
 ----------------------------------
 

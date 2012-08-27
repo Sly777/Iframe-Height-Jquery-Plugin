@@ -1,6 +1,7 @@
+
 /*
 Jquery Iframe Auto Height Plugin
-Version 1.0.0 (21.06.2012)
+Version 1.1.0 (27.08.2012)
 
 Author : Ilker Guller (http://ilkerguller.com)
 
@@ -41,20 +42,22 @@ Details: http://github.com/Sly777/Iframe-Height-Jquery-Plugin
             try
             {
                 var contentHtml = base.$el.get(0).contentDocument.location.href;
-                debug.Log("This page is non-cdi");
+                debug.Log("This page is non-Cross Domain");
                 return false;
             }
             catch(err)
             {
-                debug.Log("This page is cdi");
+                debug.Log("This page is Cross Domain");
                 return true;
             }
         };
 
         base.resetIframe = function(){
-            if(base.options.visibilitybeforeload) base.$el.css("visibility", "hidden");
+            if(base.options.visibilitybeforeload && !($.browser.msie && $.browser.version == 7)) base.$el.css("visibility", "hidden");
+            debug.Log("Old Height is " + base.$el.height() + "px");
             base.$el.css("height","").removeAttr("height");
             debug.Log("Reset iframe");
+            debug.Log("Height is " + base.$el.height() + "px after reset");
         };
 
         base.resizeFromOutside = function(event){
@@ -65,10 +68,10 @@ Details: http://github.com/Sly777/Iframe-Height-Jquery-Plugin
             if(event === undefined) return false;
             base.resetIframe();
             var bodyData = JSON.parse(event.data);
-            var frameHeightPx = (parseInt(bodyData.bodyHeight) + base.options.heightOffset)+'px';
+            var frameHeightPx = (parseInt(bodyData[base.options.externalHeightName]) + base.options.heightOffset)+'px';
             base.$el.height(frameHeightPx)
-            if(base.options.visibilitybeforeload) base.$el.css("visibility", "visible");
-            debug.Log("Got height from outside");
+            if(base.options.visibilitybeforeload && !($.browser.msie && $.browser.version == 7)) base.$el.css("visibility", "visible");
+            debug.Log("Got height from outside. Height is " + (parseInt(bodyData[base.options.externalHeightName]) + base.options.heightOffset) + 'px');
         };
 
         base.checkMessageEvent = function(){ // it works on IE8+, Chrome, Firefox3+, Opera and Safari
@@ -95,7 +98,7 @@ Details: http://github.com/Sly777/Iframe-Height-Jquery-Plugin
                 $.iframeHeight.resizeCount = 0;
                 base.$el.height(base.options.defaultHeight + base.options.heightOffset).css("height", base.options.defaultHeight + base.options.heightOffset);
 
-                if(base.options.visibilitybeforeload) base.$el.css("visibility", "visible");
+                if(base.options.visibilitybeforeload && !($.browser.msie && $.browser.version == 7)) base.$el.css("visibility", "visible");
 
                 debug.Log("set default height for iframe = " + (base.options.defaultHeight + base.options.heightOffset) + "px");
             }
@@ -103,15 +106,15 @@ Details: http://github.com/Sly777/Iframe-Height-Jquery-Plugin
 
         base.sendInfotoTop = function(){
             if(top.length > 0 && typeof JSON != "undefined"){
-              var data = {
-                'bodyHeight' : document.body.scrollHeight
-              }
-              var domain = '*';
-              data = JSON.stringify(data);
+                var data = {};
+                data[base.options.externalHeightName].value = document.body.scrollHeight;    
 
-              top.postMessage(data, domain);
-              debug.Log("sent info to top page");
-              return false;
+                var domain = '*';
+                data = JSON.stringify(data);
+
+                top.postMessage(data, domain);
+                debug.Log("sent info to top page");
+                return false;
             }
         };
 
@@ -120,7 +123,7 @@ Details: http://github.com/Sly777/Iframe-Height-Jquery-Plugin
 
             if(isThisCDI()){
                 base.$el.height(base.options.defaultHeight + base.options.heightOffset).css("height", base.options.defaultHeight + base.options.heightOffset);
-                if(base.options.visibilitybeforeload) base.$el.css("visibility", "visible");
+                if(base.options.visibilitybeforeload && !($.browser.msie && $.browser.version == 7)) base.$el.css("visibility", "visible");
                 base.checkMessageEvent();
             } else {
                 if(base.$el.css("height") === base.options.minimumHeight+"px") {
@@ -137,7 +140,7 @@ Details: http://github.com/Sly777/Iframe-Height-Jquery-Plugin
                         tryFixIframe();
                     } else if (_pageHeight > base.options.minimumHeight && base.options.exceptPages.indexOf(_pageName) == -1) {
                         base.$el.height(_pageHeight + base.options.heightOffset).css("height", _pageHeight + base.options.heightOffset);
-                        if(base.options.visibilitybeforeload) base.$el.css("visibility", "visible");
+                        if(base.options.visibilitybeforeload && !($.browser.msie && $.browser.version == 7)) base.$el.css("visibility", "visible");
                         debug.Log("Now iframe height is " + (_pageHeight + base.options.heightOffset) + "px");
                     }
                 } else {
@@ -167,15 +170,16 @@ Details: http://github.com/Sly777/Iframe-Height-Jquery-Plugin
     };
     
     $.iframeHeight.defaultOptions = {
-        resizeMaxTry         : 4,       // how many try that find true values
-        resizeWaitTime       : 50,      // wait time before next try
-        minimumHeight        : 200,     // minimum height for iframe
-        defaultHeight        : 1000,    // default height for iframe
-        heightOffset         : 0,       // default top offset for iframe
-        exceptPages          : "",      // Pages that doesnt need auto height
-        debugMode            : false,   // Debug mode
-        visibilitybeforeload : false,   // If you change this to true, iframe will be invisible when every iframe load
-        blockCrossDomain     : false    // Set true if you dont want use cross domain fix
+        resizeMaxTry         : 4,               // how many try that find true values
+        resizeWaitTime       : 50,              // wait time before next try
+        minimumHeight        : 200,             // minimum height for iframe
+        defaultHeight        : 1000,            // default height for iframe
+        heightOffset         : 0,               // default top offset for iframe
+        exceptPages          : "",              // Pages that doesnt need auto height
+        debugMode            : false,           // Debug mode
+        visibilitybeforeload : false,           // If you change this to true, iframe will be invisible when every iframe load
+        blockCrossDomain     : false,           // Set true if you dont want use cross domain fix
+        externalHeightName   : "bodyHeight"     // Height data name that comes from postMessage (CDI) and gives height value
     };
     
     $.fn.iframeHeight = function(options){
