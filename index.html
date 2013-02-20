@@ -39,7 +39,12 @@
         <ul></ul>
       </nav>
       <section>
-        <h1>Iframe Height Jquery Plugin (Version 1.1.0) - 27.08.2012</h1>
+        <h1>Iframe Height Jquery Plugin (Version 1.2.0) - 20.02.2013</h1>
+
+<p>This plugin can get contents of iframe and set height of iframe automatically. Also it has cross-domain fix (* You should read tutorial below).</p>
+
+<p>Uncompressed Version : 12.5KB (2.69KB gzipped)
+Compressed Version : 6.28KB (1.84KB gzipped)</p>
 
 <h2>Usage</h2>
 
@@ -47,6 +52,7 @@
 <li>include the latest version jquery in your page</li>
 <li>include the latest version iframe height plugin</li>
 <li>use .iframeHeight() to iframe that you want to fix</li>
+<li>use $.iframeHeightExternal() to send external page height to iframe</li>
 </ul><hr><h2>Examples</h2>
 
 <hr><p><strong>Basic Usage</strong> :</p>
@@ -105,13 +111,17 @@
 <strong>blockCrossDomain</strong> : Set true if you dont want use cross domain fix (default : false)</li>
 <li>
 <strong>externalHeightName</strong> : Height data name that comes from postMessage (CDI) and gives height value</li>
+<li>
+<strong>onMessageFunctionName</strong> : Function name that plugin calls this to get data from external source</li>
+<li>
+<strong>domainName</strong> : Set this if you want to get data from specific domain</li>
 </ul><hr><h2>Details</h2>
 
 <hr><blockquote>
 <ul>
 <li>
 <strong>iframeheight.js</strong> is development version. <strong>iframeheight.min.js</strong> is produce version (minified).</li>
-<li>When you use it for cross domain fix, You must use <strong>postMessage</strong> function on page in iframe. (<a href="http://viget.com/extend/using-javascript-postmessage-to-talk-to-iframes">Click Here</a> or <a href="http://help.dottoro.com/ljjqtjsj.php">Click Here</a> for Details)</li>
+<li>When you use it for cross domain fix, You must use <strong>postMessage</strong> function on page in iframe. (<a href="http://viget.com/extend/using-javascript-postmessage-to-talk-to-iframes">Click Here</a> or <a href="http://help.dottoro.com/ljjqtjsj.php">Click Here</a> for Details). Tutorial is below</li>
 <li>You shouldn't use it on local because it doesnt work correctly in chrome (chrome gives cross domain error on local)</li>
 </ul>
 </blockquote>
@@ -122,7 +132,20 @@
 
 <hr><h2>Change Log</h2>
 
-<hr><p>Version 1.1.0 (27.08.2012) :</p>
+<hr><p>Version 1.2.0 (20.02.2013) :</p>
+
+<blockquote>
+<ul>
+<li><strong>Jquery 1.9.x compatible now</strong></li>
+<li><strong>Cross Domain Demo added</strong></li>
+<li>Cross Domain Tutorial added (look below)</li>
+<li>Added 2 options (onMessageFunctionName, DomainName)</li>
+<li>Completely Updated Cross-domain fix (It tested on Chrome, Firefox, IE9, IE8)</li>
+<li>Added External Function ($.iframeHeightExternal())</li>
+</ul>
+</blockquote>
+
+<p>Version 1.1.0 (27.08.2012) :</p>
 
 <blockquote>
 <ul>
@@ -191,6 +214,34 @@ GNU General Public License for more details.</p>
 
 <p>You should have received a copy of the GNU General Public License
 along with this program.  If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>
+
+<hr><h2>Cross Domain Tutorial</h2>
+
+<hr><p>You can test it after upload "crossdomain_inpage.html" file (its in demos folder) to external server.</p>
+
+<p>Firstly, you must upload this plugin to 2 server (base website and external server). After that, call " $.iframeHeightExternal();" function from external page. Tadaam! It finished. :)</p>
+
+<p>Important thing is, if you change default options (in your base website), you must add your setting object to  function ($.iframeHeightExternal()) that using on your external website. For Example;</p>
+
+<p><em>when using it in your base website</em></p>
+
+<p><code>
+$('#autoIframe').iframeHeight({
+    debugMode : true,
+    minimumHeight: 450,
+    onMessageFunctionName: "dummyFunc"
+});
+</code></p>
+
+<p><em>then set it in your external site</em></p>
+
+<p><code>
+$.iframeHeightExternal({
+    debugMode : true,
+    minimumHeight: 450,
+    onMessageFunctionName: "dummyFunc"
+});
+</code></p>
       </section>
       <footer>
         <p>Project maintained by <a href="https://github.com/Sly777">Sly777</a></p>
