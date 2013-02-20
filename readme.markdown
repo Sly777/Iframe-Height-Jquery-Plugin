@@ -1,4 +1,9 @@
-# Iframe Height Jquery Plugin (Version 1.1.0) - 27.08.2012
+# Iframe Height Jquery Plugin (Version 1.2.0) - 20.02.2013
+
+This plugin can get contents of iframe and set height of iframe automatically. Also it has cross-domain fix (* You should read tutorial below).
+
+Uncompressed Version : 12.5KB (2.69KB gzipped)
+Compressed Version : 6.28KB (1.84KB gzipped)
 
 ## Usage
 
@@ -7,6 +12,7 @@
 - include the latest version jquery in your page
 - include the latest version iframe height plugin
 - use .iframeHeight() to iframe that you want to fix
+- use $.iframeHeightExternal() to send external page height to iframe
 
 ----------------------------------
 
@@ -63,6 +69,8 @@ __Full Options Usage__ :
 - __visibilitybeforeload__ : If you change this to true, iframe will be invisible when every iframe load (default : false)
 - __blockCrossDomain__ : Set true if you dont want use cross domain fix (default : false)
 - __externalHeightName__ : Height data name that comes from postMessage (CDI) and gives height value
+- __onMessageFunctionName__ : Function name that plugin calls this to get data from external source
+- __domainName__ : Set this if you want to get data from specific domain
 
 ----------------------------------
 
@@ -71,7 +79,7 @@ __Full Options Usage__ :
 ----------------------------------
 
 > - __iframeheight.js__ is development version. __iframeheight.min.js__ is produce version (minified).
-> - When you use it for cross domain fix, You must use __postMessage__ function on page in iframe. ([Click Here](http://viget.com/extend/using-javascript-postmessage-to-talk-to-iframes) or [Click Here](http://help.dottoro.com/ljjqtjsj.php) for Details)
+> - When you use it for cross domain fix, You must use __postMessage__ function on page in iframe. ([Click Here](http://viget.com/extend/using-javascript-postmessage-to-talk-to-iframes) or [Click Here](http://help.dottoro.com/ljjqtjsj.php) for Details). Tutorial is below
 > - You shouldn't use it on local because it doesnt work correctly in chrome (chrome gives cross domain error on local)
 
 ----------------------------------
@@ -87,6 +95,14 @@ You can see files inside of __Demos__ Folder.
 ## Change Log
 
 ----------------------------------
+
+Version 1.2.0 (20.02.2013) :
+> - **Jquery 1.9.x compatible now**
+> - **Cross Domain Demo added**
+> - Cross Domain Tutorial added (look below)
+> - Added 2 options (onMessageFunctionName, DomainName)
+> - Completely Updated Cross-domain fix (It tested on Chrome, Firefox, IE9, IE8)
+> - Added External Function ($.iframeHeightExternal())
 
 Version 1.1.0 (27.08.2012) :
 > - Fixed Internet explorer 7 hidden element problem
@@ -160,3 +176,34 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+----------------------------------
+
+## Cross Domain Tutorial
+
+----------------------------------
+
+You can test it after upload "crossdomain_inpage.html" file (its in demos folder) to external server.
+
+Firstly, you must upload this plugin to 2 server (base website and external server). After that, call " $.iframeHeightExternal();" function from external page. Tadaam! It finished. :)
+
+Important thing is, if you change default options (in your base website), you must add your setting object to  function ($.iframeHeightExternal()) that using on your external website. For Example;
+
+*when using it in your base website*
+
+`
+$('#autoIframe').iframeHeight({
+	debugMode : true,
+	minimumHeight: 450,
+	onMessageFunctionName: "dummyFunc"
+});
+`
+
+*then set it in your external site*
+
+`
+$.iframeHeightExternal({
+	debugMode : true,
+	minimumHeight: 450,
+	onMessageFunctionName: "dummyFunc"
+});
+`

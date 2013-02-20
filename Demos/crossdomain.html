@@ -18,16 +18,18 @@
     <header>
       <h1>Cross Domain Demo</h1
       <p>You must use "postmessage" event on your cross domain page. (<a href='http://viget.com/extend/using-javascript-postmessage-to-talk-to-iframes' target="_blank">Click Here</a> or <a href='http://help.dottoro.com/ljjqtjsj.php' target="_blank">Click Here</a> for Details)</p>
+
+      <p>And also you must upload "crossdomain_inpage.html" page to your external server and change iframe src to that page. If you don't that, you can't see demo correctly.</p>
     </header>
     <div id="main" role="main">
-      <iframe id="autoIframe" src="http://www.bbc.co.uk" width="500" height="100" style="border:2px solid gray;"></iframe>
+      <iframe id="autoIframe" src="crossdomain_inpage.html" width="500" height="100" style="border:2px solid gray;"></iframe>
     </div>
     <footer>
 
     </footer>
   </div>
 
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
   <script type="text/javascript" src="../src/iframeheight.js"></script>
   <script type="text/javascript">
       $(document).ready(function () {
