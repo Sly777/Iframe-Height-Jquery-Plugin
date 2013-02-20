@@ -13,6 +13,7 @@ Compressed Version : 6.28KB (1.84KB gzipped)
 - include the latest version iframe height plugin
 - use .iframeHeight() to iframe that you want to fix
 - use $.iframeHeightExternal() to send external page height to iframe
+- also you can install this plugin using [Jam.js](http://jamjs.org/packages/#/details/Iframe-Auto-Height-Jquery-Plugin "http://jamjs.org/packages/#/details/Iframe-Auto-Height-Jquery-Plugin") or [Bower](http://twitter.github.com/bower/ "http://twitter.github.com/bower/") *(plugin name : iframe-auto-height-jquery-plugin)*
 
 ----------------------------------
 
