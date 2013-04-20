@@ -1,7 +1,7 @@
 
 /*
 Jquery Iframe Auto Height Plugin
-Version 1.2.0 (20.02.2013)
+Version 1.2.1 (20.04.2013)
 
 Author : Ilker Guller (http://ilkerguller.com)
 
@@ -22,7 +22,7 @@ Details: http://github.com/Sly777/Iframe-Height-Jquery-Plugin
         blockCrossDomain     : false,           // Set true if you dont want use cross domain fix
         externalHeightName   : "bodyHeight",    // Height data name that comes from postMessage (CDI) and gives height value
         onMessageFunctionName: "getHeight",     // Function name that plugin calls this to get data from external source
-        domainName: "*"                         // Set this if you want to get data from specific domain
+        domainName           : "*"              // Set this if you want to get data from specific domain
     };
 
     $.iframeHeight = function(el, options){
@@ -95,7 +95,12 @@ Details: http://github.com/Sly777/Iframe-Height-Jquery-Plugin
         var isThisCDI = function(){
             try
             {
-                var contentHtml = base.$el.get(0).contentDocument.location.href;
+                var contentHtml;
+                if (base.debug.GetBrowserInfo.msie && base.debug.GetBrowserInfo.version == "7.0") {
+                    contentHtml = base.$el.get(0).contentWindow.location.href;
+                } else {
+                    contentHtml = base.$el.get(0).contentDocument.location.href;
+                }
                 base.debug.Log("This page is non-Cross Domain - " + contentHtml);
                 return false;
             }
@@ -177,7 +182,7 @@ Details: http://github.com/Sly777/Iframe-Height-Jquery-Plugin
         base.sendInfotoTop = function(){
             if(top.length > 0 && typeof JSON != "undefined"){
                 var data = {};
-                data[base.options.externalHeightName].value = document.body.scrollHeight;    
+                data[base.options.externalHeightName].value = $(document).height();    
 
                 var domain = '*';
                 data = JSON.stringify(data);
@@ -203,7 +208,7 @@ Details: http://github.com/Sly777/Iframe-Height-Jquery-Plugin
 
                 if(base.$el.get(0).contentWindow.document.body !== null) {
                     base.debug.Log("This page has body info");
-                    var _pageHeight = base.$el.get(0).contentWindow.document.body.scrollHeight;
+                    var _pageHeight = $(base.$el.get(0).contentWindow.document).height();
                     var _pageName = base.$el.get(0).contentWindow.document.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1).toLowerCase();
 
                     base.debug.Log("page height : " + _pageHeight  + "px || page name : " + _pageName);
@@ -282,7 +287,7 @@ Details: http://github.com/Sly777/Iframe-Height-Jquery-Plugin
             }
 
             if (event.data == iframeOptions.onMessageFunctionName) {
-                var message = document.body.scrollHeight;
+                var message = $(document).height();
 
                 event.source.postMessage(message, event.origin);
             }

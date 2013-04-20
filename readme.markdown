@@ -1,4 +1,4 @@
-# Iframe Height Jquery Plugin (Version 1.2.0) - 20.02.2013
+# Iframe Height Jquery Plugin (Version 1.2.1) - 20.04.2013
 
 This plugin can get contents of iframe and set height of iframe automatically. Also it has cross-domain fix (* You should read tutorial below).
 
@@ -96,6 +96,10 @@ You can see files inside of __Demos__ Folder.
 ## Change Log
 
 ----------------------------------
+
+Version 1.2.1 (20.04.2013) :
+> - Fixed Cross-domain check for Internet explorer 7
+> - Changed ScrollHeight() to Jquery's Height() (Thanks to [archiechen](https://github.com/archiechen "https://github.com/archiechen"))
 
 Version 1.2.0 (20.02.2013) :
 > - **Jquery 1.9.x compatible now**
