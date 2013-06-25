@@ -1,0 +1,10 @@
+{
+  "name": "Iframe-Auto-Height-Jquery-Plugin",
+  "version": "1.2.1",
+  "homepage": "https://ilkerguller.com",
+  "description": "This plugin can get contents of iframe and set height of iframe automatically. Also it has cross-domain fix",
+  "main": "Src/iframeheight.js",
+  "dependencies": {
+    "jquery": "~1.6"
+  }
+}
