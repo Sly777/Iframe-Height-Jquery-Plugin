@@ -39,14 +39,16 @@
         <ul></ul>
       </nav>
       <section>
-        <h1>Iframe Height Jquery Plugin (Version 1.2.1) - 20.04.2013</h1>
+        <h1>
+<a name="iframe-height-jquery-plugin-version-122---12082013" class="anchor" href="#iframe-height-jquery-plugin-version-122---12082013"><span class="octicon octicon-link"></span></a>Iframe Height Jquery Plugin (Version 1.2.2) - 12.08.2013</h1>
 
 <p>This plugin can get contents of iframe and set height of iframe automatically. Also it has cross-domain fix (* You should read tutorial below).</p>
 
-<p>Uncompressed Version : 12.5KB (2.69KB gzipped)
-Compressed Version : 6.28KB (1.84KB gzipped)</p>
+<p>Uncompressed Version : 13.8KB (2.69KB gzipped)
+Compressed Version : 6.28KB (2KB gzipped)</p>
 
-<h2>Usage</h2>
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
 
 <hr><ul>
 <li>include the latest version jquery in your page</li>
@@ -55,7 +57,8 @@ Compressed Version : 6.28KB (1.84KB gzipped)</p>
 <li>use $.iframeHeightExternal() to send external page height to iframe</li>
 <li>also you can install this plugin using <a href="http://jamjs.org/packages/#/details/Iframe-Auto-Height-Jquery-Plugin" title="http://jamjs.org/packages/#/details/Iframe-Auto-Height-Jquery-Plugin">Jam.js</a> or <a href="http://twitter.github.com/bower/" title="http://twitter.github.com/bower/">Bower</a> <em>(plugin name : iframe-auto-height-jquery-plugin)</em>
 </li>
-</ul><hr><h2>Examples</h2>
+</ul><hr><h2>
+<a name="examples" class="anchor" href="#examples"><span class="octicon octicon-link"></span></a>Examples</h2>
 
 <hr><p><strong>Basic Usage</strong> :</p>
 
@@ -90,7 +93,8 @@ Compressed Version : 6.28KB (1.84KB gzipped)</p>
     externalHeightName   : "bodyHeight"
 });</code></p>
 
-<hr><h2>Options</h2>
+<hr><h2>
+<a name="options" class="anchor" href="#options"><span class="octicon octicon-link"></span></a>Options</h2>
 
 <hr><ul>
 <li>
@@ -117,7 +121,22 @@ Compressed Version : 6.28KB (1.84KB gzipped)</p>
 <strong>onMessageFunctionName</strong> : Function name that plugin calls this to get data from external source</li>
 <li>
 <strong>domainName</strong> : Set this if you want to get data from specific domain</li>
-</ul><hr><h2>Details</h2>
+<li>
+<strong>watcher</strong> : Set true if you want to watch iframe document changes automatically (default : false)</li>
+<li>
+<strong>watcherTime</strong> : Watcher Control Time (default : 400ms)</li>
+</ul><hr><h2>
+<a name="functions" class="anchor" href="#functions"><span class="octicon octicon-link"></span></a>Functions</h2>
+
+<hr><p>These are triggers for iframe so You can use these like <strong>"$('#iframe').trigger("FUNCTIONNAMES");"</strong></p>
+
+<ul>
+<li>
+<strong>updateIframe</strong> : Trigger to Update Iframe Height Manually</li>
+<li>
+<strong>killWatcher</strong> : Kill Watcher to stop to update iframe automatically</li>
+</ul><hr><h2>
+<a name="details" class="anchor" href="#details"><span class="octicon octicon-link"></span></a>Details</h2>
 
 <hr><blockquote>
 <ul>
@@ -128,13 +147,27 @@ Compressed Version : 6.28KB (1.84KB gzipped)</p>
 </ul>
 </blockquote>
 
-<hr><h2>Demos</h2>
+<hr><h2>
+<a name="demos" class="anchor" href="#demos"><span class="octicon octicon-link"></span></a>Demos</h2>
 
 <hr><p>You can see files inside of <strong>Demos</strong> Folder.</p>
 
-<hr><h2>Change Log</h2>
+<hr><h2>
+<a name="change-log" class="anchor" href="#change-log"><span class="octicon octicon-link"></span></a>Change Log</h2>
 
-<hr><p>Version 1.2.1 (20.04.2013) :</p>
+<hr><p>Version 1.2.2 (12.08.2013) :</p>
+
+<blockquote>
+<ul>
+<li>Added Watcher! Now plugin can control iframe height automatically.</li>
+<li>Added 2 Trigger: updateIframe &amp; killWatcher (Look "Functions" Title for Details)</li>
+<li>Added Watcher Demo Page</li>
+<li>Added Github Tags</li>
+<li>Fixed ID Problem (Thanks to <a href="https://github.com/ThibWeb" title="https://github.com/ThibWeb">Thibaud Colas</a>)</li>
+</ul>
+</blockquote>
+
+<p>Version 1.2.1 (20.04.2013) :</p>
 
 <blockquote>
 <ul>
@@ -174,15 +207,18 @@ Compressed Version : 6.28KB (1.84KB gzipped)</p>
 </ul>
 </blockquote>
 
-<hr><h2>Author</h2>
+<hr><h2>
+<a name="author" class="anchor" href="#author"><span class="octicon octicon-link"></span></a>Author</h2>
 
 <hr><p>Ilker Guller (<a href="http://ilkerguller.com">http://ilkerguller.com</a>)</p>
 
-<hr><h2>For Issues, New Features, Grammar problems :)</h2>
+<hr><h2>
+<a name="for-issues-new-features-grammar-problems-" class="anchor" href="#for-issues-new-features-grammar-problems-"><span class="octicon octicon-link"></span></a>For Issues, New Features, Grammar problems :)</h2>
 
 <hr><p>If you find issues or you want to add new features, feel free to post them to the 'Issues' tab.</p>
 
-<hr><h2>License</h2>
+<hr><h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
 
 <hr><p><strong>MIT License</strong></p>
 
@@ -226,7 +262,8 @@ GNU General Public License for more details.</p>
 <p>You should have received a copy of the GNU General Public License
 along with this program.  If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>
 
-<hr><h2>Cross Domain Tutorial</h2>
+<hr><h2>
+<a name="cross-domain-tutorial" class="anchor" href="#cross-domain-tutorial"><span class="octicon octicon-link"></span></a>Cross Domain Tutorial</h2>
 
 <hr><p>You can test it after upload "crossdomain_inpage.html" file (its in demos folder) to external server.</p>
 
@@ -256,7 +293,7 @@ $.iframeHeightExternal({
       </section>
       <footer>
         <p>Project maintained by <a href="https://github.com/Sly777">Sly777</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></small></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
       </footer>
     </div>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
