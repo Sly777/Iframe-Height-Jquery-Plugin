@@ -1,4 +1,3 @@
-
 /*
 Jquery Iframe Auto Height Plugin
 Version 1.2.1 (20.04.2013)
@@ -10,6 +9,7 @@ Details: http://github.com/Sly777/Iframe-Height-Jquery-Plugin
 */
 
 (function($){
+    var uuid = 0;                               // Unique ID counter for iframes with no ID
     var iframeOptions = {
         resizeMaxTry         : 4,               // how many try that find true values
         resizeWaitTime       : 50,              // wait time before next try
@@ -148,6 +148,10 @@ Details: http://github.com/Sly777/Iframe-Height-Jquery-Plugin
                 window.attachEvent('onmessage', base.resizeFromOutside);
             }
 
+             
+            if (!base.$el.id) {
+                base.$el.id = "iframe-id-" + (++uuid);
+            }
             var frame = document.getElementById(base.$el.attr("id"));
 
             var message = base.options.onMessageFunctionName;
