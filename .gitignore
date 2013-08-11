@@ -18,6 +18,8 @@ local.properties
 
 # External tool builders
 .externalToolBuilders/
+.idea/
+*.idea
 
 # Locally stored "Eclipse launch configurations"
 *.launch
