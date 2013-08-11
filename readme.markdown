@@ -1,9 +1,9 @@
-# Iframe Height Jquery Plugin (Version 1.2.1) - 20.04.2013
+# Iframe Height Jquery Plugin (Version 1.2.2) - 12.08.2013
 
 This plugin can get contents of iframe and set height of iframe automatically. Also it has cross-domain fix (* You should read tutorial below).
 
-Uncompressed Version : 12.5KB (2.69KB gzipped)
-Compressed Version : 6.28KB (1.84KB gzipped)
+Uncompressed Version : 13.8KB (2.69KB gzipped)
+Compressed Version : 6.28KB (2KB gzipped)
 
 ## Usage
 
@@ -72,6 +72,19 @@ __Full Options Usage__ :
 - __externalHeightName__ : Height data name that comes from postMessage (CDI) and gives height value
 - __onMessageFunctionName__ : Function name that plugin calls this to get data from external source
 - __domainName__ : Set this if you want to get data from specific domain
+- __watcher__ : Set true if you want to watch iframe document changes automatically (default : false)
+- __watcherTime__ : Watcher Control Time (default : 400ms)
+
+----------------------------------
+
+## Functions
+
+----------------------------------
+
+These are triggers for iframe so You can use these like __"$('#iframe').trigger("FUNCTIONNAMES");"__
+
+- __updateIframe__ : Trigger to Update Iframe Height Manually
+- __killWatcher__ : Kill Watcher to stop to update iframe automatically
 
 ----------------------------------
 
@@ -96,6 +109,13 @@ You can see files inside of __Demos__ Folder.
 ## Change Log
 
 ----------------------------------
+
+Version 1.2.2 (12.08.2013) :
+> - Added Watcher! Now plugin can control iframe height automatically.
+> - Added 2 Trigger: updateIframe & killWatcher (Look "Functions" Title for Details)
+> - Added Watcher Demo Page
+> - Added Github Tags
+> - Fixed ID Problem (Thanks to [Thibaud Colas](https://github.com/ThibWeb "https://github.com/ThibWeb"))
 
 Version 1.2.1 (20.04.2013) :
 > - Fixed Cross-domain check for Internet explorer 7

@@ -1,6 +1,6 @@
 /*
 Jquery Iframe Auto Height Plugin
-Version 1.2.1 (20.04.2013)
+Version 1.2.2 (12.08.2013)
 
 Author : Ilker Guller (http://ilkerguller.com)
 
@@ -22,7 +22,9 @@ Details: http://github.com/Sly777/Iframe-Height-Jquery-Plugin
         blockCrossDomain     : false,           // Set true if you dont want use cross domain fix
         externalHeightName   : "bodyHeight",    // Height data name that comes from postMessage (CDI) and gives height value
         onMessageFunctionName: "getHeight",     // Function name that plugin calls this to get data from external source
-        domainName           : "*"              // Set this if you want to get data from specific domain
+        domainName           : "*",             // Set this if you want to get data from specific domain
+        watcher              : false,           // Set true if you want to watch iframe document changes automatic
+        watcherTime          : 400              // Watcher control Milliseconds
     };
 
     $.iframeHeight = function(el, options){
@@ -33,6 +35,7 @@ Details: http://github.com/Sly777/Iframe-Height-Jquery-Plugin
         base.$el = $(el);
         base.el = el;
         base.$el.data("iframeHeight", base);
+        base.watcher = null;
 
         base.debug = {
             FirstTime : true,
@@ -48,7 +51,7 @@ Details: http://github.com/Sly777/Iframe-Height-Jquery-Plugin
                     this.FirstTime = false;
                 }
                 if (base.options.debugMode && base.options.debugMode === true && console && (message !== null || message !== "")) {
-                    console["log"](message);
+                    console["log"]("Iframe Plugin : " + message);
                 }
             },
             GetBrowserInfo : (function (pub) { // this function is from Jquery.Migrate with IE6 & Browser Null Fix
@@ -175,11 +178,8 @@ Details: http://github.com/Sly777/Iframe-Height-Jquery-Plugin
             } else {
                 clearTimeout($.iframeHeight.resizeTimeout);
                 $.iframeHeight.resizeCount = 0;
-                base.$el.height(base.options.defaultHeight + base.options.heightOffset).css("height", base.options.defaultHeight + base.options.heightOffset);
-
-                if(base.options.visibilitybeforeload && !(base.debug.GetBrowserInfo.msie && base.debug.GetBrowserInfo.version == "7.0")) base.$el.css("visibility", "visible");
-
-                base.debug.Log("set default height for iframe = " + (base.options.defaultHeight + base.options.heightOffset) + "px");
+                base.debug.Log("set default height for iframe");
+                base.setIframeHeight(base.options.defaultHeight + base.options.heightOffset);
             }
         };
 
@@ -196,6 +196,13 @@ Details: http://github.com/Sly777/Iframe-Height-Jquery-Plugin
                 return false;
             }
             return true;
+        };
+
+        base.setIframeHeight = function(_height) {
+            base.$el.height(_height).css("height", _height);
+            if(base.options.visibilitybeforeload && !(base.debug.GetBrowserInfo.msie && base.debug.GetBrowserInfo.version == "7.0")) base.$el.css("visibility", "visible");
+            base.debug.Log("Now iframe height is " + _height + "px");
+            base.$el.data("iframeheight", _height);
         };
 
         $.iframeHeight.resizeIframe = function(){
@@ -219,9 +226,7 @@ Details: http://github.com/Sly777/Iframe-Height-Jquery-Plugin
                     if((_pageHeight <= base.options.minimumHeight && base.options.exceptPages.indexOf(_pageName) == -1)) {
                         tryFixIframe();
                     } else if (_pageHeight > base.options.minimumHeight && base.options.exceptPages.indexOf(_pageName) == -1) {
-                        base.$el.height(_pageHeight + base.options.heightOffset).css("height", _pageHeight + base.options.heightOffset);
-                        if(base.options.visibilitybeforeload && !(base.debug.GetBrowserInfo.msie && base.debug.GetBrowserInfo.version == "7.0")) base.$el.css("visibility", "visible");
-                        base.debug.Log("Now iframe height is " + (_pageHeight + base.options.heightOffset) + "px");
+                        base.setIframeHeight(_pageHeight + base.options.heightOffset);
                     }
                 } else {
                     base.debug.Log("This page has not body info");
@@ -229,6 +234,16 @@ Details: http://github.com/Sly777/Iframe-Height-Jquery-Plugin
                 }
             }
         };
+
+        this.$el.bind("updateIframe", function() {
+            $.iframeHeight.resizeIframe();
+            base.debug.Log("Updated Iframe Manually");
+        });
+
+        this.$el.bind("killWatcher", function() {
+            window.clearInterval(base.watcher);
+            base.debug.Log("Killed Watcher");
+        });
         
         base.init = function(){            
             base.options = $.extend({},$.iframeHeight.defaultOptions, options);
@@ -245,6 +260,13 @@ Details: http://github.com/Sly777/Iframe-Height-Jquery-Plugin
             base.$el.load(function () {
                 $.iframeHeight.resizeIframe();
             });
+
+            if(base.options.watcher) {
+                base.watcher = setInterval(function(){
+                    $.iframeHeight.resizeIframe();
+                    base.debug.Log("Checked Iframe");
+                }, base.options.watcherTime);
+            }
 
             return true;
         };
