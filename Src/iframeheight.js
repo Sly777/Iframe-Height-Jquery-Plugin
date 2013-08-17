@@ -133,8 +133,9 @@ Details: http://github.com/Sly777/Iframe-Height-Jquery-Plugin
                 return false; 
             }
             if(typeof event === "undefined" || typeof event.data != "number") return false;
+            if(typeof parseInt(event.data) != "number") return false;
             var frameHeightPx = (parseInt(event.data) + base.options.heightOffset)+'px';
-            if(typeof frameHeightPx != "number") return false;
+
 
             base.resetIframe();
 
