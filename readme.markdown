@@ -1,4 +1,4 @@
-# Iframe Height Jquery Plugin (Version 1.2.2) - 12.08.2013
+# Iframe Height Jquery Plugin (Version 1.2.3) - 18.08.2013
 
 This plugin can get contents of iframe and set height of iframe automatically. Also it has cross-domain fix (* You should read tutorial below).
 
@@ -95,6 +95,7 @@ These are triggers for iframe so You can use these like __"$('#iframe').trigger(
 > - __iframeheight.js__ is development version. __iframeheight.min.js__ is produce version (minified).
 > - When you use it for cross domain fix, You must use __postMessage__ function on page in iframe. ([Click Here](http://viget.com/extend/using-javascript-postmessage-to-talk-to-iframes) or [Click Here](http://help.dottoro.com/ljjqtjsj.php) for Details). Tutorial is below
 > - You shouldn't use it on local because it doesnt work correctly in chrome (chrome gives cross domain error on local)
+> - __Cross-Domain__ and __Watcher__ cannot work together. If you want to enable watcher, you cannot use crossdomain fix.
 
 ----------------------------------
 
@@ -109,6 +110,11 @@ You can see files inside of __Demos__ Folder.
 ## Change Log
 
 ----------------------------------
+
+Version 1.2.3 (18.08.2013) :
+> - Cross domain & Watcher control added
+> - Cross domain number control fixed
+> - Watcher scroll problem fixed
 
 Version 1.2.2 (12.08.2013) :
 > - Added Watcher! Now plugin can control iframe height automatically.

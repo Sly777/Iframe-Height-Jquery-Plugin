@@ -1,6 +1,6 @@
 /*
 Jquery Iframe Auto Height Plugin
-Version 1.2.2 (12.08.2013)
+Version 1.2.3 (18.08.2013)
 
 Author : Ilker Guller (http://ilkerguller.com)
 
@@ -34,6 +34,11 @@ Details: http://github.com/Sly777/Iframe-Height-Jquery-Plugin
 
         base.$el = $(el);
         base.el = el;
+
+        base.$el.before("<div id='iframeHeight-Container' style='padding: 0; margin: 0; border: none; background-color: transparent;'></div>");
+        base.$el.appendTo("#iframeHeight-Container");
+        base.$container = $("#iframeHeight-Container");
+
         base.$el.data("iframeHeight", base);
         base.watcher = null;
 
@@ -127,10 +132,12 @@ Details: http://github.com/Sly777/Iframe-Height-Jquery-Plugin
                 base.debug.Log("Blocked cross domain fix");
                 return false; 
             }
-            if(event === undefined) return false;
+            if(typeof event === "undefined" || typeof event.data != "number") return false;
+            var frameHeightPx = (parseInt(event.data) + base.options.heightOffset)+'px';
+            if(typeof frameHeightPx != "number") return false;
+
             base.resetIframe();
 
-            var frameHeightPx = (parseInt(event.data) + base.options.heightOffset)+'px';
             base.$el.height(frameHeightPx);
             if(base.options.visibilitybeforeload && !(base.debug.GetBrowserInfo.msie && base.debug.GetBrowserInfo.version == "7.0")) base.$el.css("visibility", "visible");
             base.debug.Log("Got height from outside. Height is " + (parseInt(event.data) + base.options.heightOffset) + 'px');
@@ -200,6 +207,7 @@ Details: http://github.com/Sly777/Iframe-Height-Jquery-Plugin
 
         base.setIframeHeight = function(_height) {
             base.$el.height(_height).css("height", _height);
+            if(base.$el.data("iframeheight") == _height) base.$container.height(_height).css("height", _height);
             if(base.options.visibilitybeforeload && !(base.debug.GetBrowserInfo.msie && base.debug.GetBrowserInfo.version == "7.0")) base.$el.css("visibility", "visible");
             base.debug.Log("Now iframe height is " + _height + "px");
             base.$el.data("iframeheight", _height);
@@ -245,8 +253,9 @@ Details: http://github.com/Sly777/Iframe-Height-Jquery-Plugin
             base.debug.Log("Killed Watcher");
         });
         
-        base.init = function(){            
+        base.init = function(){
             base.options = $.extend({},$.iframeHeight.defaultOptions, options);
+            if(base.options.watcher == true) base.options.blockCrossDomain = true;
 
             base.debug.Log(base.options);
 
