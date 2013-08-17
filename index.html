@@ -40,7 +40,7 @@
       </nav>
       <section>
         <h1>
-<a name="iframe-height-jquery-plugin-version-122---12082013" class="anchor" href="#iframe-height-jquery-plugin-version-122---12082013"><span class="octicon octicon-link"></span></a>Iframe Height Jquery Plugin (Version 1.2.2) - 12.08.2013</h1>
+<a name="iframe-height-jquery-plugin-version-123---18082013" class="anchor" href="#iframe-height-jquery-plugin-version-123---18082013"><span class="octicon octicon-link"></span></a>Iframe Height Jquery Plugin (Version 1.2.3) - 18.08.2013</h1>
 
 <p>This plugin can get contents of iframe and set height of iframe automatically. Also it has cross-domain fix (* You should read tutorial below).</p>
 
@@ -144,6 +144,8 @@ Compressed Version : 6.28KB (2KB gzipped)</p>
 <strong>iframeheight.js</strong> is development version. <strong>iframeheight.min.js</strong> is produce version (minified).</li>
 <li>When you use it for cross domain fix, You must use <strong>postMessage</strong> function on page in iframe. (<a href="http://viget.com/extend/using-javascript-postmessage-to-talk-to-iframes">Click Here</a> or <a href="http://help.dottoro.com/ljjqtjsj.php">Click Here</a> for Details). Tutorial is below</li>
 <li>You shouldn't use it on local because it doesnt work correctly in chrome (chrome gives cross domain error on local)</li>
+<li>
+<strong>Cross-Domain</strong> and <strong>Watcher</strong> cannot work together. If you want to enable watcher, you cannot use crossdomain fix.</li>
 </ul>
 </blockquote>
 
@@ -155,7 +157,17 @@ Compressed Version : 6.28KB (2KB gzipped)</p>
 <hr><h2>
 <a name="change-log" class="anchor" href="#change-log"><span class="octicon octicon-link"></span></a>Change Log</h2>
 
-<hr><p>Version 1.2.2 (12.08.2013) :</p>
+<hr><p>Version 1.2.3 (18.08.2013) :</p>
+
+<blockquote>
+<ul>
+<li>Cross domain &amp; Watcher control added</li>
+<li>Cross domain number control fixed</li>
+<li>Watcher scroll problem fixed</li>
+</ul>
+</blockquote>
+
+<p>Version 1.2.2 (12.08.2013) :</p>
 
 <blockquote>
 <ul>
