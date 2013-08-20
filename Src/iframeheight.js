@@ -229,7 +229,7 @@ Details: http://github.com/Sly777/Iframe-Height-Jquery-Plugin
                 if(base.$el.get(0).contentWindow.document.body !== null) {
                     base.debug.Log("This page has body info");
                     var _pageHeight = $(base.$el.get(0).contentWindow.document).height();
-                    var _pageName = base.$el.get(0).contentWindow.document.location.pathname.substring(window.location.pathname.lastIndexOf('/') + 1).toLowerCase();
+                    var _pageName = base.$el.get(0).contentWindow.document.location.pathname.substring(base.$el.get(0).contentWindow.document.location.pathname.lastIndexOf('/') + 1).toLowerCase();
 
                     base.debug.Log("page height : " + _pageHeight  + "px || page name : " + _pageName);
                     if((_pageHeight <= base.options.minimumHeight && base.options.exceptPages.indexOf(_pageName) == -1)) {
