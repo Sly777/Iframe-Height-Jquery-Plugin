@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2012 Ýlker Güller
+Copyright (c) 2012 Ä°lker GÃ¼ller
 
 Permission is hereby granted, free of charge, to any person
 obtaining a copy of this software and associated documentation
@@ -25,7 +25,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 		
 GPL License
 
-Copyright (c) 2012 Ýlker Güller
+Copyright (c) 2012 Ä°lker GÃ¼ller
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

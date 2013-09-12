@@ -1,4 +1,6 @@
-# Iframe Height Jquery Plugin (Version 1.2.3) - 18.08.2013
+Iframe Height Jquery Plugin
+=============
+(Version 1.2.4) - 12.09.2013
 
 This plugin can get contents of iframe and set height of iframe automatically. Also it has cross-domain fix (* You should read tutorial below).
 
@@ -23,25 +25,32 @@ Compressed Version : 6.28KB (2KB gzipped)
 
 __Basic Usage__ :
 
-`$(document).ready(function(){
+```
+$(document).ready(function(){
     $('#autoIframe').iframeHeight();
-});`
+});
+```
 
 or
 
-`$(document).ready(function(){
+```
+$(document).ready(function(){
     $.iframeHeight('#autoIframe');
-});`
+});
+```
 
 __Debug Mode Usage__ :
 
-`$('#autoIframe').iframeHeight({
+```
+$('#autoIframe').iframeHeight({
 	debugMode : true
-});`
+});
+```
 
 __Full Options Usage__ :
 
-`$('#autoIframe').iframeHeight({
+```
+$('#autoIframe').iframeHeight({
 	resizeMaxTry         : 2,  
 	resizeWaitTime       : 300,    
 	minimumHeight        : 100, 
@@ -51,8 +60,13 @@ __Full Options Usage__ :
 	debugMode            : false,
 	visibilitybeforeload : true,
 	blockCrossDomain     : true,
-	externalHeightName   : "bodyHeight"
-});`
+	externalHeightName   : "bodyHeight",
+    onMessageFunctionName: "getHeight",
+    domainName           : "*",
+    watcher              : false,
+    watcherTime          : 400
+});
+```
 
 ----------------------------------
 
@@ -110,6 +124,11 @@ You can see files inside of __Demos__ Folder.
 ## Change Log
 
 ----------------------------------
+
+Version 1.2.4 (12.09.2013) :
+> - Now you can trigger update from external page (Crossdomain)
+> - Added Cross Domain Click Trigger Demo
+> - Fixed container height setter
 
 Version 1.2.3 (18.08.2013) :
 > - Cross domain & Watcher control added
@@ -221,20 +240,31 @@ Important thing is, if you change default options (in your base website), you mu
 
 *when using it in your base website*
 
-`
+```
 $('#autoIframe').iframeHeight({
 	debugMode : true,
 	minimumHeight: 450,
 	onMessageFunctionName: "dummyFunc"
 });
-`
+```
 
 *then set it in your external site*
 
-`
+```
 $.iframeHeightExternal({
 	debugMode : true,
 	minimumHeight: 450,
 	onMessageFunctionName: "dummyFunc"
 });
-`
+```
+
+*If you want to trigger from any element to update iframe*
+
+```
+var iframeExt = $.iframeHeightExternal({
+	debugMode : true,
+	minimumHeight: 450,
+	onMessageFunctionName: "dummyFunc"
+});
+$('button').on("click", function(){ iframeExt.update(); });
+```

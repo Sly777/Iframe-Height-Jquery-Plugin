@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Cross Domain Demo | Iframe Auto Height by Ilker Guller</title>
+    <title>Cross Domain - Click Trigger Demo | Iframe Auto Height by Ilker Guller</title>
     <meta name="description" content="Testing Iframe Height plugin" />
     <meta name="author" content="Ilker Guller" />
     <meta name="viewport" content="width=device-width">
@@ -14,13 +14,16 @@
 </head>
 <body>
 
-<div id="container" style="height: 630px;">
+<div id="container">
     <header>
-        <h1>Cross Domain Inside Page Demo</h1>
+        <h1>Cross Domain Demo</h1>
         <p>You must use "postmessage" event on your cross domain page. (<a href='http://viget.com/extend/using-javascript-postmessage-to-talk-to-iframes' target="_blank">Click Here</a> or <a href='http://help.dottoro.com/ljjqtjsj.php' target="_blank">Click Here</a> for Details)</p>
 
-        <p>And also you must upload this page to your external server and change iframe src to that page. If you don't that, you can't see demo correctly. If you upload, you just ignore this :)</p>
+        <p>And also you must upload "crossdomain_inpage.html" page to your external server and change iframe src to that page. If you don't that, you can't see demo correctly.</p>
     </header>
+    <div id="main" role="main">
+        <iframe id="autoIframe" src="crossdomain_clicktrigger_inpage.html" width="500" height="100" style="border:2px solid gray;"></iframe>
+    </div>
     <footer>
 
     </footer>
@@ -30,7 +33,9 @@
 <script type="text/javascript" src="../Src/iframeheight.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-        $.iframeHeightExternal(); // if you change default settings, you must add your setting object to this function
+        $('#autoIframe').iframeHeight({
+            debugMode : true
+        });
     });
 </script>
 </body>

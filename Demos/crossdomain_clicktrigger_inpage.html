@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Cross Domain Demo | Iframe Auto Height by Ilker Guller</title>
+    <title>Cross Domain - Click Trigger Demo | Iframe Auto Height by Ilker Guller</title>
     <meta name="description" content="Testing Iframe Height plugin" />
     <meta name="author" content="Ilker Guller" />
     <meta name="viewport" content="width=device-width">
@@ -20,6 +20,10 @@
         <p>You must use "postmessage" event on your cross domain page. (<a href='http://viget.com/extend/using-javascript-postmessage-to-talk-to-iframes' target="_blank">Click Here</a> or <a href='http://help.dottoro.com/ljjqtjsj.php' target="_blank">Click Here</a> for Details)</p>
 
         <p>And also you must upload this page to your external server and change iframe src to that page. If you don't that, you can't see demo correctly. If you upload, you just ignore this :)</p>
+
+        <p>Also You can add event listener to trigger update iframe</p>
+
+        <button>Update Height</button>
     </header>
     <footer>
 
@@ -30,7 +34,12 @@
 <script type="text/javascript" src="../Src/iframeheight.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-        $.iframeHeightExternal(); // if you change default settings, you must add your setting object to this function
+        var iframeExt = $.iframeHeightExternal(); // if you change default settings, you must add your setting object to this function
+
+        $('button').on("click", function() {
+            iframeExt.update();
+            console.log("Updated !!");
+        });
     });
 </script>
 </body>

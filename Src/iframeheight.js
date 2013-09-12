@@ -1,6 +1,6 @@
 /*
 Jquery Iframe Auto Height Plugin
-Version 1.2.3 (18.08.2013)
+Version 1.2.4 (12.09.2013)
 
 Author : Ilker Guller (http://ilkerguller.com)
 
@@ -134,14 +134,10 @@ Details: http://github.com/Sly777/Iframe-Height-Jquery-Plugin
             }
             if(typeof event === "undefined" || typeof event.data != "number") return false;
             if(typeof parseInt(event.data) != "number") return false;
-            var frameHeightPx = (parseInt(event.data) + base.options.heightOffset)+'px';
-
+            var frameHeightPx = parseInt(event.data) + parseInt(base.options.heightOffset);
 
             base.resetIframe();
-
-            base.$el.height(frameHeightPx);
-            if(base.options.visibilitybeforeload && !(base.debug.GetBrowserInfo.msie && base.debug.GetBrowserInfo.version == "7.0")) base.$el.css("visibility", "visible");
-            base.debug.Log("Got height from outside. Height is " + (parseInt(event.data) + base.options.heightOffset) + 'px');
+            base.setIframeHeight(frameHeightPx);
             return true;
         };
 
@@ -208,7 +204,7 @@ Details: http://github.com/Sly777/Iframe-Height-Jquery-Plugin
 
         base.setIframeHeight = function(_height) {
             base.$el.height(_height).css("height", _height);
-            if(base.$el.data("iframeheight") == _height) base.$container.height(_height).css("height", _height);
+            if(base.$el.data("iframeheight") != _height) base.$container.height(_height).css("height", _height);
             if(base.options.visibilitybeforeload && !(base.debug.GetBrowserInfo.msie && base.debug.GetBrowserInfo.version == "7.0")) base.$el.css("visibility", "visible");
             base.debug.Log("Now iframe height is " + _height + "px");
             base.$el.data("iframeheight", _height);
@@ -328,5 +324,12 @@ Details: http://github.com/Sly777/Iframe-Height-Jquery-Plugin
                 event.source.postMessage(message, event.origin);
             }
         }
+
+        return {
+            update : function() {
+                var message = $(document).height();
+                parent.postMessage(message, iframeOptions.domainName);
+            }
+        };
     };
 })(jQuery);
