@@ -40,7 +40,9 @@
       </nav>
       <section>
         <h1>
-<a name="iframe-height-jquery-plugin-version-123---18082013" class="anchor" href="#iframe-height-jquery-plugin-version-123---18082013"><span class="octicon octicon-link"></span></a>Iframe Height Jquery Plugin (Version 1.2.3) - 18.08.2013</h1>
+<a name="iframe-height-jquery-plugin" class="anchor" href="#iframe-height-jquery-plugin"><span class="octicon octicon-link"></span></a>Iframe Height Jquery Plugin</h1>
+
+<p>(Version 1.2.4) - 12.09.2013</p>
 
 <p>This plugin can get contents of iframe and set height of iframe automatically. Also it has cross-domain fix (* You should read tutorial below).</p>
 
@@ -62,25 +64,28 @@ Compressed Version : 6.28KB (2KB gzipped)</p>
 
 <hr><p><strong>Basic Usage</strong> :</p>
 
-<p><code>$(document).ready(function(){
+<pre><code>$(document).ready(function(){
     $('#autoIframe').iframeHeight();
-});</code></p>
+});
+</code></pre>
 
 <p>or</p>
 
-<p><code>$(document).ready(function(){
+<pre><code>$(document).ready(function(){
     $.iframeHeight('#autoIframe');
-});</code></p>
+});
+</code></pre>
 
 <p><strong>Debug Mode Usage</strong> :</p>
 
-<p><code>$('#autoIframe').iframeHeight({
+<pre><code>$('#autoIframe').iframeHeight({
     debugMode : true
-});</code></p>
+});
+</code></pre>
 
 <p><strong>Full Options Usage</strong> :</p>
 
-<p><code>$('#autoIframe').iframeHeight({
+<pre><code>$('#autoIframe').iframeHeight({
     resizeMaxTry         : 2,  
     resizeWaitTime       : 300,    
     minimumHeight        : 100, 
@@ -90,8 +95,13 @@ Compressed Version : 6.28KB (2KB gzipped)</p>
     debugMode            : false,
     visibilitybeforeload : true,
     blockCrossDomain     : true,
-    externalHeightName   : "bodyHeight"
-});</code></p>
+    externalHeightName   : "bodyHeight",
+    onMessageFunctionName: "getHeight",
+    domainName           : "*",
+    watcher              : false,
+    watcherTime          : 400
+});
+</code></pre>
 
 <hr><h2>
 <a name="options" class="anchor" href="#options"><span class="octicon octicon-link"></span></a>Options</h2>
@@ -157,7 +167,17 @@ Compressed Version : 6.28KB (2KB gzipped)</p>
 <hr><h2>
 <a name="change-log" class="anchor" href="#change-log"><span class="octicon octicon-link"></span></a>Change Log</h2>
 
-<hr><p>Version 1.2.3 (18.08.2013) :</p>
+<hr><p>Version 1.2.4 (12.09.2013) :</p>
+
+<blockquote>
+<ul>
+<li>Now you can trigger update from external page (Crossdomain)</li>
+<li>Added Cross Domain Click Trigger Demo</li>
+<li>Fixed container height setter</li>
+</ul>
+</blockquote>
+
+<p>Version 1.2.3 (18.08.2013) :</p>
 
 <blockquote>
 <ul>
@@ -285,23 +305,31 @@ along with this program.  If not, see <a href="http://www.gnu.org/licenses/">htt
 
 <p><em>when using it in your base website</em></p>
 
-<p><code>
-$('#autoIframe').iframeHeight({
+<pre><code>$('#autoIframe').iframeHeight({
     debugMode : true,
     minimumHeight: 450,
     onMessageFunctionName: "dummyFunc"
 });
-</code></p>
+</code></pre>
 
 <p><em>then set it in your external site</em></p>
 
-<p><code>
-$.iframeHeightExternal({
+<pre><code>$.iframeHeightExternal({
     debugMode : true,
     minimumHeight: 450,
     onMessageFunctionName: "dummyFunc"
 });
-</code></p>
+</code></pre>
+
+<p><em>If you want to trigger from any element to update iframe</em></p>
+
+<pre><code>var iframeExt = $.iframeHeightExternal({
+    debugMode : true,
+    minimumHeight: 450,
+    onMessageFunctionName: "dummyFunc"
+});
+$('button').on("click", function(){ iframeExt.update(); });
+</code></pre>
       </section>
       <footer>
         <p>Project maintained by <a href="https://github.com/Sly777">Sly777</a></p>
