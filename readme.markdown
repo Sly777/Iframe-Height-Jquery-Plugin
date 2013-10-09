@@ -183,11 +183,11 @@ Ilker Guller (http://ilkerguller.com)
 
 ----------------------------------
 
-[Thibaud Colas](https://github.com/ThibWeb "https://github.com/ThibWeb")
-[Bernd Matzner](https://github.com/bmatzner "https://github.com/bmatzner")
-[Lincetto](https://github.com/lincetto "https://github.com/lincetto")
-[James75](https://github.com/james75 "https://github.com/james75")
-[archiechen](https://github.com/archiechen "https://github.com/archiechen")
+> - [Thibaud Colas](https://github.com/ThibWeb "https://github.com/ThibWeb")
+> - [Bernd Matzner](https://github.com/bmatzner "https://github.com/bmatzner")
+> - [Lincetto](https://github.com/lincetto "https://github.com/lincetto")
+> - [James75](https://github.com/james75 "https://github.com/james75")
+> - [archiechen](https://github.com/archiechen "https://github.com/archiechen")
 
 ----------------------------------
 
