@@ -1,6 +1,6 @@
 Iframe Height Jquery Plugin
 =============
-(Version 1.2.4) - 12.09.2013
+(Version 1.2.5) - 09.10.2013
 
 This plugin can get contents of iframe and set height of iframe automatically. Also it has cross-domain fix (* You should read tutorial below).
 
@@ -125,6 +125,13 @@ You can see files inside of __Demos__ Folder.
 
 ----------------------------------
 
+Version 1.2.5 (09.10.2013) :
+> - Fixed IE8 postMessage issue (Thanks to [Lincetto](https://github.com/lincetto "https://github.com/lincetto"))
+> - Fixed setTimeout call when jQuery is in noConflict mode (Thanks to [Thibaud Colas](https://github.com/ThibWeb "https://github.com/ThibWeb"))
+> - Fixed Iframe Location (Thanks to [James75](https://github.com/james75 "https://github.com/james75"))
+> - Fixed Watcher Update Flick
+> - Added Contributors & TODO List sections to readme file
+
 Version 1.2.4 (12.09.2013) :
 > - Now you can trigger update from external page (Crossdomain)
 > - Added Cross Domain Click Trigger Demo
@@ -169,6 +176,27 @@ Version 1.0.0 (21.06.2012) :
 ----------------------------------
 
 Ilker Guller (http://ilkerguller.com)
+
+----------------------------------
+
+## Contributors
+
+----------------------------------
+
+[Thibaud Colas](https://github.com/ThibWeb "https://github.com/ThibWeb")
+[Bernd Matzner](https://github.com/bmatzner "https://github.com/bmatzner")
+[Lincetto](https://github.com/lincetto "https://github.com/lincetto")
+[James75](https://github.com/james75 "https://github.com/james75")
+[archiechen](https://github.com/archiechen "https://github.com/archiechen")
+
+----------------------------------
+
+## TODO List
+
+----------------------------------
+
+> - Works with two or more iframes
+> - Decrease memory uses
 
 ----------------------------------
 

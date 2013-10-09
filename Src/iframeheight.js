@@ -1,6 +1,6 @@
 /*
 Jquery Iframe Auto Height Plugin
-Version 1.2.x (23.09.2013)
+Version 1.2.5 (09.10.2013)
 
 Author : Ilker Guller (http://ilkerguller.com)
 
@@ -35,9 +35,9 @@ Details: http://github.com/Sly777/Iframe-Height-Jquery-Plugin
         base.$el = $(el);
         base.el = el;
 
-        base.$el.before("<div id='iframeHeight-Container' style='padding: 0; margin: 0; border: none; background-color: transparent;'></div>");
-        base.$el.appendTo("#iframeHeight-Container");
-        base.$container = $("#iframeHeight-Container");
+        base.$el.before("<div id='iframeHeight-Container-" + uuid + "' style='padding: 0; margin: 0; border: none; background-color: transparent;'></div>");
+        base.$el.appendTo("#iframeHeight-Container-" + uuid);
+        base.$container = $("#iframeHeight-Container-" + uuid);
 
         base.$el.data("iframeHeight", base);
         base.watcher = null;
@@ -132,12 +132,24 @@ Details: http://github.com/Sly777/Iframe-Height-Jquery-Plugin
                 base.debug.Log("Blocked cross domain fix");
                 return false; 
             }
-            if(typeof event === "undefined" || typeof event.data != "string" || !/^ifh*/.test(event.data)) return false;
-            if(typeof parseInt(event.data.substring(3)) != "number") return false;
-            var frameHeightPx = parseInt(event.data.substring(3)) + parseInt(base.options.heightOffset);
 
-            base.resetIframe();
-            base.setIframeHeight(frameHeightPx);
+            if(typeof event === "undefined") return false;
+
+            if(typeof event.data == "string") {
+                if(event.data == "reset") {
+                    base.$el.css("height","").removeAttr("height");
+                } else {
+                    if(!/^ifh*/.test(event.data)) return false;
+
+                    if(typeof parseInt(event.data.substring(3)) != "number") return false;
+                    var frameHeightPx = parseInt(event.data.substring(3)) + parseInt(base.options.heightOffset);
+
+                    base.resetIframe();
+                    base.setIframeHeight(frameHeightPx);
+                }
+            } else {
+                return false;
+            }
             return true;
         };
 
@@ -326,8 +338,15 @@ Details: http://github.com/Sly777/Iframe-Height-Jquery-Plugin
 
         return {
             update : function() {
-                var message = "ifh" + $(document).height();
-                parent.postMessage(message, iframeOptions.domainName);
+                this.reset();
+                window.__domainname = iframeOptions.domainName;
+                setTimeout(function(){
+                    var message = "ifh" + $(document).height();
+                    parent.postMessage(message, window.__domainname);
+                }, 90);
+            },
+            reset : function() {
+                parent.postMessage("reset", iframeOptions.domainName);
             }
         };
     };
