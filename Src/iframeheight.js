@@ -1,6 +1,6 @@
 /*
 Jquery Iframe Auto Height Plugin
-Version 1.2.4 (12.09.2013)
+Version 1.2.x (23.09.2013)
 
 Author : Ilker Guller (http://ilkerguller.com)
 
@@ -132,9 +132,9 @@ Details: http://github.com/Sly777/Iframe-Height-Jquery-Plugin
                 base.debug.Log("Blocked cross domain fix");
                 return false; 
             }
-            if(typeof event === "undefined" || typeof event.data != "number") return false;
-            if(typeof parseInt(event.data) != "number") return false;
-            var frameHeightPx = parseInt(event.data) + parseInt(base.options.heightOffset);
+            if(typeof event === "undefined" || typeof event.data != "string" || !/^ifh*/.test(event.data)) return false;
+            if(typeof parseInt(event.data.substring(3)) != "number") return false;
+            var frameHeightPx = parseInt(event.data.substring(3)) + parseInt(base.options.heightOffset);
 
             base.resetIframe();
             base.setIframeHeight(frameHeightPx);
@@ -319,15 +319,14 @@ Details: http://github.com/Sly777/Iframe-Height-Jquery-Plugin
             }
 
             if (event.data == iframeOptions.onMessageFunctionName) {
-                var message = $(document).height();
-
+                var message = "ifh" + $(document).height();
                 event.source.postMessage(message, event.origin);
             }
         }
 
         return {
             update : function() {
-                var message = $(document).height();
+                var message = "ifh" + $(document).height();
                 parent.postMessage(message, iframeOptions.domainName);
             }
         };
