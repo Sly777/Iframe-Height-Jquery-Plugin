@@ -177,7 +177,7 @@ Details: http://github.com/Sly777/Iframe-Height-Jquery-Plugin
         var tryFixIframe = function(){
             if($.iframeHeight.resizeCount <= base.options.resizeMaxTry){
                 $.iframeHeight.resizeCount++;
-                $.iframeHeight.resizeTimeout = setTimeout("$.iframeHeight.resizeIframe()", base.options.resizeWaitTime);
+                $.iframeHeight.resizeTimeout = setTimeout($.iframeHeight.resizeIframe, base.options.resizeWaitTime);
                 base.debug.Log($.iframeHeight.resizeCount + " time(s) tried");
             } else {
                 clearTimeout($.iframeHeight.resizeTimeout);
