@@ -303,7 +303,7 @@ Details: http://github.com/Sly777/Iframe-Height-Jquery-Plugin
     $.iframeHeightExternal = function (){
         if(arguments.length === 1) {
             if($.isPlainObject(arguments[0])) {
-                iframeOptions = arguments[0];
+            	iframeOptions = $.extend({}, $.iframeHeight.defaultOptions, arguments[0]);
             }
         }
 
