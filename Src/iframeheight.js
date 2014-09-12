@@ -16,7 +16,7 @@ Details: http://github.com/Sly777/Iframe-Height-Jquery-Plugin
         minimumHeight        : 200,             // minimum height for iframe
         defaultHeight        : 3000,            // default height for iframe
         heightOffset         : 0,               // default top offset for iframe
-        exceptPages          : "",              // Pages that doesnt need auto height
+        exceptPages          : [],              // Pages that doesnt need auto height
         debugMode            : false,           // Debug mode
         visibilitybeforeload : false,           // If you change this to true, iframe will be invisible when every iframe load
         blockCrossDomain     : false,           // Set true if you dont want use cross domain fix
