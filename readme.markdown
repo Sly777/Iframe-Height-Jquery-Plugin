@@ -25,7 +25,7 @@ Compressed Version : 6.28KB (2KB gzipped)
 
 __Basic Usage__ :
 
-```
+```javascript
 $(document).ready(function(){
     $('#autoIframe').iframeHeight();
 });
@@ -33,7 +33,7 @@ $(document).ready(function(){
 
 or
 
-```
+```javascript
 $(document).ready(function(){
     $.iframeHeight('#autoIframe');
 });
@@ -41,7 +41,7 @@ $(document).ready(function(){
 
 __Debug Mode Usage__ :
 
-```
+```javascript
 $('#autoIframe').iframeHeight({
 	debugMode : true
 });
@@ -49,7 +49,7 @@ $('#autoIframe').iframeHeight({
 
 __Full Options Usage__ :
 
-```
+```javascript
 $('#autoIframe').iframeHeight({
 	resizeMaxTry         : 2,
 	resizeWaitTime       : 300,
@@ -268,7 +268,7 @@ Important thing is, if you change default options (in your base website), you mu
 
 *when using it in your base website*
 
-```
+```javascript
 $('#autoIframe').iframeHeight({
 	debugMode : true,
 	minimumHeight: 450,
@@ -278,7 +278,7 @@ $('#autoIframe').iframeHeight({
 
 *then set it in your external site*
 
-```
+```javascript
 $.iframeHeightExternal({
 	debugMode : true,
 	minimumHeight: 450,
@@ -288,7 +288,7 @@ $.iframeHeightExternal({
 
 *If you want to trigger from any element to update iframe*
 
-```
+```javascript
 var iframeExt = $.iframeHeightExternal({
 	debugMode : true,
 	minimumHeight: 450,
