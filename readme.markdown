@@ -1,4 +1,4 @@
-Iframe Height Jquery Plugin
+Iframe Height Jquery Plugin [![](http://api.libscore.com/badge/$.fn.iframeHeight.svg)](http://libscore.com#$.fn.iframeHeight)
 =============
 (Version 1.2.5) - 09.10.2013
 
@@ -51,12 +51,12 @@ __Full Options Usage__ :
 
 ```
 $('#autoIframe').iframeHeight({
-	resizeMaxTry         : 2,  
-	resizeWaitTime       : 300,    
-	minimumHeight        : 100, 
-	defaultHeight        : 500,   
-	heightOffset         : 90,    
-	exceptPages          : "",  
+	resizeMaxTry         : 2,
+	resizeWaitTime       : 300,
+	minimumHeight        : 100,
+	defaultHeight        : 500,
+	heightOffset         : 90,
+	exceptPages          : "",
 	debugMode            : false,
 	visibilitybeforeload : true,
 	blockCrossDomain     : true,
@@ -236,7 +236,7 @@ HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
-		
+
 **GPL License**
 
 Copyright (c) 2012 İlker Güller
