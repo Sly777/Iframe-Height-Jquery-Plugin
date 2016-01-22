@@ -1,4 +1,4 @@
-Iframe Height Jquery Plugin
+Iframe Height Jquery Plugin [![](http://api.libscore.com/badge/$.fn.iframeHeight.svg)](http://libscore.com#$.fn.iframeHeight)
 =============
 (Version 1.2.5) - 09.10.2013
 
@@ -25,7 +25,7 @@ Compressed Version : 6.28KB (2KB gzipped)
 
 __Basic Usage__ :
 
-```
+```javascript
 $(document).ready(function(){
     $('#autoIframe').iframeHeight();
 });
@@ -33,7 +33,7 @@ $(document).ready(function(){
 
 or
 
-```
+```javascript
 $(document).ready(function(){
     $.iframeHeight('#autoIframe');
 });
@@ -41,7 +41,7 @@ $(document).ready(function(){
 
 __Debug Mode Usage__ :
 
-```
+```javascript
 $('#autoIframe').iframeHeight({
 	debugMode : true
 });
@@ -49,14 +49,14 @@ $('#autoIframe').iframeHeight({
 
 __Full Options Usage__ :
 
-```
+```javascript
 $('#autoIframe').iframeHeight({
-	resizeMaxTry         : 2,  
-	resizeWaitTime       : 300,    
-	minimumHeight        : 100, 
-	defaultHeight        : 500,   
-	heightOffset         : 90,    
-	exceptPages          : "",  
+	resizeMaxTry         : 2,
+	resizeWaitTime       : 300,
+	minimumHeight        : 100,
+	defaultHeight        : 500,
+	heightOffset         : 90,
+	exceptPages          : "",
 	debugMode            : false,
 	visibilitybeforeload : true,
 	blockCrossDomain     : true,
@@ -236,7 +236,7 @@ HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
-		
+
 **GPL License**
 
 Copyright (c) 2012 İlker Güller
@@ -268,7 +268,7 @@ Important thing is, if you change default options (in your base website), you mu
 
 *when using it in your base website*
 
-```
+```javascript
 $('#autoIframe').iframeHeight({
 	debugMode : true,
 	minimumHeight: 450,
@@ -278,7 +278,7 @@ $('#autoIframe').iframeHeight({
 
 *then set it in your external site*
 
-```
+```javascript
 $.iframeHeightExternal({
 	debugMode : true,
 	minimumHeight: 450,
@@ -288,7 +288,7 @@ $.iframeHeightExternal({
 
 *If you want to trigger from any element to update iframe*
 
-```
+```javascript
 var iframeExt = $.iframeHeightExternal({
 	debugMode : true,
 	minimumHeight: 450,
