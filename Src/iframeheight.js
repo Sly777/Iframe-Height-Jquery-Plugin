@@ -275,7 +275,7 @@ Details: http://github.com/Sly777/Iframe-Height-Jquery-Plugin
             }
             
             $.iframeHeight.resizeIframe();
-            base.$el.load(function () {
+            base.$el.on('load', function () {
                 $.iframeHeight.resizeIframe();
             });
 
