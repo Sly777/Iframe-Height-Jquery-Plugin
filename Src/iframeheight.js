@@ -252,12 +252,12 @@ Details: http://github.com/Sly777/Iframe-Height-Jquery-Plugin
             }
         };
 
-        this.$el.bind("updateIframe", function() {
+        this.$el.on("updateIframe", function() {
             $.iframeHeight.resizeIframe();
             base.debug.Log("Updated Iframe Manually");
         });
 
-        this.$el.bind("killWatcher", function() {
+        this.$el.on("killWatcher", function() {
             window.clearInterval(base.watcher);
             base.debug.Log("Killed Watcher");
         });
@@ -290,6 +290,7 @@ Details: http://github.com/Sly777/Iframe-Height-Jquery-Plugin
         };
 
         base.init();
+        uuid++;
     };
     
     $.iframeHeight.defaultOptions = iframeOptions;
